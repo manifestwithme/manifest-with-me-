@@ -1,1278 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#1a0533" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Manifest With Me" />
-  <meta name="description" content="Manifest your dream life with daily affirmations, vision boards, and guided journaling." />
-  <link rel="manifest" href="manifest.json" />
-  <title>Manifest With Me ✨</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Manifesting With Me Today — a blog for women who are done waiting and ready to call in everything they desire. Affirmations, rituals, law of attraction, and real talk."/>
+  <meta name="theme-color" content="#0d001a"/>
+  <meta property="og:title" content="Manifesting With Me Today ✨ — The Blog"/>
+  <meta property="og:description" content="Real tools, real rituals, and real talk for women who are serious about manifesting the life they deserve."/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200"/>
+  <title>Manifesting With Me Today ✨ — The Blog</title>
   <style>
-    /* =============================
-       GLOBAL RESET & VARIABLES
-    ============================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0d001a;
+      --bg2:#140025;
+      --bg3:#1a0033;
+      --card:#1e0038;
+      --purple:#8b5cf6;
+      --lavender:#c4b5fd;
+      --pink:#f472b6;
+      --gold:#f5c842;
+      --teal:#5eead4;
+      --white:#f0e6ff;
+      --soft:#c4a8e0;
+      --muted:#7a5c9a;
+      --border:rgba(139,92,246,0.18);
+      --r:18px;
+      --rs:10px;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
 
-    :root {
-      --bg-deep: #0d001a;
-      --bg-card: #1a0533;
-      --bg-card2: #220a40;
-      --accent-gold: #f5c842;
-      --accent-gold2: #ffd700;
-      --accent-purple: #b57bee;
-      --accent-lavender: #d4a8ff;
-      --accent-pink: #ff8fc8;
-      --accent-teal: #7ef5e4;
-      --text-main: #f0e6ff;
-      --text-soft: #c4a8e0;
-      --text-muted: #7a5c9a;
-      --border: rgba(181, 123, 238, 0.2);
-      --glow: 0 0 20px rgba(181, 123, 238, 0.3);
-      --glow-gold: 0 0 15px rgba(245, 200, 66, 0.4);
-      --radius: 20px;
-      --radius-sm: 12px;
-      --nav-h: 72px;
-      --safe-top: env(safe-area-inset-top, 0px);
-    }
+    /* Stars */
+    #stars{position:fixed;inset:0;z-index:0;pointer-events:none;
+      background:radial-gradient(ellipse at 20% 80%,rgba(139,92,246,.12) 0%,transparent 50%),
+                radial-gradient(ellipse at 80% 20%,rgba(244,114,182,.08) 0%,transparent 40%),
+                #0d001a}
+    .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d,2s) ease-in-out infinite alternate}
+    @keyframes twinkle{from{opacity:.05;transform:scale(.8)}to{opacity:.7;transform:scale(1.2)}}
 
-    html, body {
-      height: 100%;
-      background: var(--bg-deep);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
+    /* Layout */
+    .container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px}
+    .container-sm{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 24px}
 
-    /* =============================
-       STAR BACKGROUND
-    ============================= */
-    #stars {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background: radial-gradient(ellipse at 20% 80%, rgba(140,60,255,0.15) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 20%, rgba(255,100,200,0.1) 0%, transparent 40%),
-                  radial-gradient(ellipse at 50% 50%, rgba(30,0,60,1) 0%, #0d001a 100%);
-    }
-    .star {
-      position: absolute; border-radius: 50%; background: white;
-      animation: twinkle var(--d) ease-in-out infinite alternate;
-    }
-    @keyframes twinkle { from { opacity: 0.1; transform: scale(0.8); } to { opacity: 0.9; transform: scale(1.2); } }
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:rgba(13,0,26,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1100px;margin:0 auto}
+    .nav-logo{font-size:20px;font-weight:800;background:linear-gradient(135deg,#f5c842,#c4b5fd,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;white-space:nowrap}
+    .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .nav-link{color:var(--soft);font-size:14px;font-weight:600;text-decoration:none;padding:7px 14px;border-radius:50px;transition:all .2s}
+    .nav-link:hover{color:var(--white);background:rgba(139,92,246,.15)}
+    .nav-cta{background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff!important;padding:9px 20px!important;box-shadow:0 4px 14px rgba(139,92,246,.4)}
+    .nav-cta:hover{opacity:.9;background:linear-gradient(135deg,#8b5cf6,#ec4899)!important}
 
-    /* =============================
-       APP SHELL
-    ============================= */
-    #app {
-      position: fixed; inset: 0; z-index: 1;
-      display: flex; flex-direction: column;
-      max-width: 480px; margin: 0 auto;
-    }
+    /* HERO */
+    .hero{padding:90px 0 70px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.18) 0%,transparent 70%);pointer-events:none}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.3);border-radius:50px;padding:8px 18px;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.5px;margin-bottom:24px}
+    .hero-title{font-size:clamp(36px,6vw,68px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+    .hero-title span{background:linear-gradient(135deg,#f5c842,#c4b5fd 50%,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:18px;color:var(--soft);max-width:540px;margin:0 auto 36px;line-height:1.7}
+    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 28px;border-radius:50px;font-size:16px;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s}
+    .btn:active{transform:scale(.97)}
+    .btn-primary{background:linear-gradient(135deg,#8b5cf6,#ec4899);color:#fff;box-shadow:0 6px 24px rgba(139,92,246,.45)}
+    .btn-secondary{background:rgba(139,92,246,.12);color:var(--lavender);border:1px solid var(--border)}
+    .hero-scroll{margin-top:50px;display:flex;justify-content:center}
+    .scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--purple),transparent);animation:scrolldown 2s ease-in-out infinite}
+    @keyframes scrolldown{0%,100%{transform:scaleY(1);opacity:.7}50%{transform:scaleY(1.3);opacity:1}}
 
-    /* =============================
-       SCREENS
-    ============================= */
-    .screen {
-      display: none; flex-direction: column;
-      flex: 1; overflow-y: auto; overflow-x: hidden;
-      padding-bottom: var(--nav-h);
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-    .screen.active { display: flex; }
+    /* DAILY AFFIRMATION WIDGET */
+    .aff-widget{background:linear-gradient(135deg,#2a0855,#1a0040);border:1px solid rgba(196,181,253,.2);border-radius:24px;padding:40px 36px;text-align:center;margin:60px 0;position:relative;overflow:hidden}
+    .aff-widget::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.15),transparent)}
+    .aff-widget-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .aff-widget-text{font-size:clamp(18px,3vw,26px);font-weight:700;line-height:1.4;color:var(--white);margin-bottom:28px;min-height:80px;display:flex;align-items:center;justify-content:center;transition:opacity .3s}
+    .aff-widget-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .aff-widget-btn{padding:12px 24px;border-radius:50px;border:none;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s}
+    .aff-widget-btn-copy{background:linear-gradient(135deg,#f5c842,#f0a500);color:#0d001a}
+    .aff-widget-btn-next{background:rgba(196,181,253,.12);color:var(--lavender);border:1px solid var(--border)}
+    .aff-widget-count{font-size:12px;color:var(--muted);margin-top:14px}
 
-    /* =============================
-       ONBOARDING
-    ============================= */
-    #screen-onboard {
-      padding-bottom: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(181,123,238,0.25) 0%, transparent 70%);
-    }
-    .onboard-inner {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      min-height: 100vh; padding: 40px 30px 60px;
-      text-align: center;
-    }
-    .onboard-emoji { font-size: 72px; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-    .onboard-title {
-      font-size: 34px; font-weight: 800; letter-spacing: -1px;
-      background: linear-gradient(135deg, #f5c842, #d4a8ff, #ff8fc8);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 14px; line-height: 1.1;
-    }
-    .onboard-sub { font-size: 16px; color: var(--text-soft); line-height: 1.6; margin-bottom: 36px; max-width: 300px; }
-    .onboard-steps { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 320px; margin-bottom: 40px; }
-    .onboard-step {
-      display: flex; align-items: center; gap: 14px;
-      background: rgba(181,123,238,0.1); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 14px 18px; text-align: left;
-    }
-    .onboard-step-icon { font-size: 24px; flex-shrink: 0; }
-    .onboard-step-text { font-size: 14px; color: var(--text-soft); line-height: 1.4; }
-    .onboard-step-text strong { color: var(--text-main); display: block; margin-bottom: 2px; }
+    /* SECTION HEADERS */
+    .section-head{text-align:center;margin-bottom:44px}
+    .section-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:10px}
+    .section-title{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:12px}
+    .section-sub{font-size:16px;color:var(--soft);max-width:500px;margin:0 auto}
 
-    .name-input-wrap { width: 100%; max-width: 320px; margin-bottom: 20px; }
-    .name-input-wrap label { display: block; font-size: 13px; color: var(--text-soft); margin-bottom: 8px; text-align: left; }
-    .name-input {
-      width: 100%; padding: 14px 18px;
-      background: rgba(181,123,238,0.1); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); color: var(--text-main); font-size: 16px;
-      outline: none; transition: border-color .2s, box-shadow .2s;
-    }
-    .name-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 3px rgba(181,123,238,0.2); }
-    .name-input::placeholder { color: var(--text-muted); }
+    /* BLOG GRID */
+    .blog-section{padding:80px 0}
+    .cat-filter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+    .cat-btn{padding:9px 20px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;border:1px solid var(--border);background:rgba(139,92,246,.08);color:var(--soft);transition:all .2s}
+    .cat-btn.active{background:rgba(139,92,246,.25);border-color:var(--purple);color:var(--lavender)}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+    .blog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none;display:flex;flex-direction:column}
+    .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(139,92,246,.25)}
+    .blog-card-img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg3)}
+    .blog-card-img-placeholder{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:48px}
+    .blog-card-body{padding:22px;flex:1;display:flex;flex-direction:column}
+    .blog-card-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .blog-card-cat{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+    .cat-love{background:rgba(244,114,182,.15);color:#f472b6}
+    .cat-abundance{background:rgba(245,200,66,.15);color:#f5c842}
+    .cat-mindset{background:rgba(139,92,246,.2);color:var(--lavender)}
+    .cat-ritual{background:rgba(94,234,212,.15);color:var(--teal)}
+    .cat-science{background:rgba(96,165,250,.15);color:#60a5fa}
+    .blog-card-date{font-size:12px;color:var(--muted)}
+    .blog-card-title{font-size:18px;font-weight:800;line-height:1.3;margin-bottom:8px;color:var(--white)}
+    .blog-card-excerpt{font-size:14px;color:var(--soft);line-height:1.6;flex:1}
+    .blog-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+    .blog-card-read{font-size:12px;color:var(--muted)}
+    .blog-card-arrow{font-size:18px;color:var(--purple);transition:transform .2s}
+    .blog-card:hover .blog-card-arrow{transform:translateX(4px)}
 
-    .btn-primary {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; max-width: 320px; padding: 18px; border: none;
-      border-radius: var(--radius); font-size: 17px; font-weight: 700; cursor: pointer;
-      background: linear-gradient(135deg, #8b5cf6, #ec4899);
-      color: white; letter-spacing: 0.3px;
-      box-shadow: 0 4px 20px rgba(139,92,246,0.5);
-      transition: transform .15s, box-shadow .15s;
-    }
-    .btn-primary:active { transform: scale(0.97); }
+    /* FEATURED POST */
+    .featured-section{padding:60px 0 20px}
+    .featured-card{background:linear-gradient(135deg,#2d1060,#1a0040);border:1px solid rgba(196,181,253,.2);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:0;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+    .featured-card:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(139,92,246,.3)}
+    .featured-card-img{background:linear-gradient(135deg,#3d1080,#2a0060);display:flex;align-items:center;justify-content:center;font-size:80px;min-height:300px;position:relative;overflow:hidden}
+    .featured-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,.3),rgba(244,114,182,.2))}
+    .featured-card-body{padding:40px}
+    .featured-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,200,66,.15);border:1px solid rgba(245,200,66,.3);border-radius:50px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--gold);margin-bottom:18px}
+    .featured-title{font-size:clamp(20px,2.5vw,28px);font-weight:800;line-height:1.25;margin-bottom:14px}
+    .featured-excerpt{font-size:15px;color:var(--soft);line-height:1.7;margin-bottom:24px}
+    .featured-meta{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted)}
 
-    /* =============================
-       NAV BAR
-    ============================= */
-    #nav {
-      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 100%; max-width: 480px; height: var(--nav-h);
-      background: rgba(13,0,26,0.9); backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border);
-      display: none; z-index: 100;
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-    #nav.visible { display: flex; }
-    .nav-items { display: flex; width: 100%; height: 100%; }
-    .nav-item {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 4px; cursor: pointer;
-      color: var(--text-muted); font-size: 10px; font-weight: 600;
-      letter-spacing: 0.5px; text-transform: uppercase;
-      transition: color .2s; border: none; background: none;
-      padding: 8px 0;
-    }
-    .nav-item.active { color: var(--accent-purple); }
-    .nav-icon { font-size: 22px; line-height: 1; }
-    .nav-dot {
-      width: 4px; height: 4px; border-radius: 50%; background: var(--accent-purple);
-      margin-top: -2px; opacity: 0; transition: opacity .2s;
-    }
-    .nav-item.active .nav-dot { opacity: 1; }
+    /* MOON TRACKER */
+    .moon-section{padding:60px 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.06),transparent)}
+    .moon-card{background:linear-gradient(135deg,#1e0038,#0d001a);border:1px solid rgba(94,234,212,.2);border-radius:24px;padding:40px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+    .moon-emoji{font-size:80px;text-align:center;filter:drop-shadow(0 0 20px rgba(94,234,212,.4));animation:moonpulse 4s ease-in-out infinite}
+    @keyframes moonpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+    .moon-title{font-size:24px;font-weight:800;margin-bottom:8px}
+    .moon-sub{font-size:15px;color:var(--soft);margin-bottom:16px}
+    .moon-affirmations{display:flex;flex-direction:column;gap:8px}
+    .moon-aff{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--soft)}
+    .moon-aff::before{content:'✦';color:var(--teal);flex-shrink:0}
 
-    /* =============================
-       HOME SCREEN
-    ============================= */
-    #screen-home { padding: 0; }
-    .home-header {
-      padding: calc(var(--safe-top) + 24px) 24px 0;
-      background: linear-gradient(180deg, rgba(139,92,246,0.15) 0%, transparent 100%);
-    }
-    .home-greeting { font-size: 14px; color: var(--text-muted); margin-bottom: 4px; }
-    .home-name { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+    /* UNIQUE FEATURES */
+    .features-section{padding:80px 0}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+    .feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:transform .2s,box-shadow .2s}
+    .feature-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(139,92,246,.2)}
+    .feature-icon{font-size:36px;margin-bottom:14px}
+    .feature-title{font-size:17px;font-weight:800;margin-bottom:8px}
+    .feature-desc{font-size:14px;color:var(--soft);line-height:1.6}
+    .feature-badge{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:rgba(245,200,66,.1);color:var(--gold)}
 
-    .streak-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(245,200,66,0.15); border: 1px solid rgba(245,200,66,0.3);
-      border-radius: 20px; padding: 6px 14px; margin-top: 12px;
-      font-size: 13px; font-weight: 700; color: var(--accent-gold);
-    }
+    /* NEWSLETTER */
+    .newsletter-section{padding:80px 0}
+    .newsletter-card{background:linear-gradient(135deg,#2d0860,#1a0040);border:1px solid rgba(196,181,253,.2);border-radius:24px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+    .newsletter-card::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(245,200,66,.08),transparent)}
+    .newsletter-title{font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:12px}
+    .newsletter-sub{font-size:16px;color:var(--soft);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+    .newsletter-perks{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:32px}
+    .newsletter-perk{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--soft)}
+    .newsletter-perk::before{content:'✓';color:var(--teal);font-weight:700}
+    .newsletter-form{display:flex;gap:12px;max-width:460px;margin:0 auto}
+    .newsletter-input{flex:1;padding:16px 20px;background:rgba(255,255,255,.07);border:1px solid var(--border);border-radius:50px;color:var(--white);font-size:15px;outline:none;transition:border-color .2s;font-family:inherit}
+    .newsletter-input:focus{border-color:var(--purple)}
+    .newsletter-input::placeholder{color:var(--muted)}
+    .newsletter-btn{padding:16px 24px;background:linear-gradient(135deg,#f5c842,#f0a500);color:#0d001a;border:none;border-radius:50px;font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap;transition:transform .15s}
+    .newsletter-btn:active{transform:scale(.97)}
+    .newsletter-note{font-size:12px;color:var(--muted);margin-top:12px}
 
-    .section { padding: 24px 20px 0; }
-    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .section-title { font-size: 17px; font-weight: 700; }
-    .section-action { font-size: 13px; color: var(--accent-purple); cursor: pointer; font-weight: 600; }
+    /* ABOUT */
+    .about-section{padding:80px 0}
+    .about-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start}
+    .about-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;font-size:42px;flex-shrink:0;box-shadow:0 0 40px rgba(139,92,246,.4)}
+    .about-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin-bottom:8px}
+    .about-name{font-size:28px;font-weight:800;margin-bottom:4px}
+    .about-handle{font-size:14px;color:var(--muted);margin-bottom:16px}
+    .about-bio{font-size:15px;color:var(--soft);line-height:1.8;margin-bottom:20px}
+    .about-ig{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(244,114,182,.2));border:1px solid var(--border);border-radius:50px;color:var(--lavender);font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}
+    .about-ig:hover{background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(244,114,182,.35))}
 
-    /* Daily Affirmation Card */
-    .affirmation-card {
-      background: linear-gradient(135deg, #2d1060, #1a0040);
-      border: 1px solid rgba(181,123,238,0.25);
-      border-radius: var(--radius); padding: 28px 24px;
-      position: relative; overflow: hidden; cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .affirmation-card::before {
-      content: ''; position: absolute; top: -40px; right: -40px;
-      width: 120px; height: 120px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,200,66,0.2), transparent);
-    }
-    .affirmation-card:active { transform: scale(0.98); }
-    .aff-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 12px; }
-    .aff-text { font-size: 20px; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 20px; }
-    .aff-actions { display: flex; gap: 10px; }
-    .aff-btn {
-      flex: 1; padding: 12px; border-radius: var(--radius-sm); border: none; cursor: pointer;
-      font-size: 13px; font-weight: 700; transition: opacity .2s;
-    }
-    .aff-btn:active { opacity: 0.8; }
-    .aff-btn-affirm { background: linear-gradient(135deg, #f5c842, #f0a500); color: #0d001a; }
-    .aff-btn-next { background: rgba(181,123,238,0.15); color: var(--accent-lavender); border: 1px solid var(--border); }
+    /* FOOTER */
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 0 30px}
+    .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    .footer-brand{font-size:20px;font-weight:800;background:linear-gradient(135deg,#f5c842,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+    .footer-tagline{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+    .footer-ig{display:inline-flex;align-items:center;gap:8px;color:var(--soft);font-size:14px;font-weight:600;text-decoration:none}
+    .footer-col-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .footer-links{display:flex;flex-direction:column;gap:10px}
+    .footer-link{color:var(--soft);font-size:14px;text-decoration:none;transition:color .2s}
+    .footer-link:hover{color:var(--white)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
 
-    /* Category Pills */
-    .cats-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
-    .cats-scroll::-webkit-scrollbar { display: none; }
-    .cat-pill {
-      flex-shrink: 0; padding: 10px 18px; border-radius: 50px;
-      font-size: 13px; font-weight: 700; cursor: pointer;
-      border: 1px solid var(--border); background: rgba(181,123,238,0.08);
-      color: var(--text-soft); white-space: nowrap; transition: all .2s;
-    }
-    .cat-pill.active { background: rgba(181,123,238,0.25); border-color: var(--accent-purple); color: var(--accent-lavender); }
+    /* TOAST */
+    #toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);z-index:999;background:rgba(30,0,60,.95);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:50px;padding:14px 28px;font-size:14px;font-weight:600;color:var(--white);white-space:nowrap;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+    #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-    /* Quick Actions */
-    .quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .quick-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 16px; cursor: pointer;
-      transition: transform .15s, box-shadow .15s;
-    }
-    .quick-card:active { transform: scale(0.96); }
-    .quick-icon { font-size: 28px; margin-bottom: 8px; }
-    .quick-label { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-    .quick-sub { font-size: 11px; color: var(--text-muted); }
-    .quick-card.locked { opacity: 0.6; }
-    .lock-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 10px; color: var(--accent-gold); margin-top: 6px;
-      background: rgba(245,200,66,0.1); padding: 3px 8px; border-radius: 10px;
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .featured-card{grid-template-columns:1fr}
+      .featured-card-img{min-height:180px}
+      .footer-inner{grid-template-columns:1fr;gap:30px}
+      .moon-card{grid-template-columns:1fr;text-align:center}
+      .about-card{grid-template-columns:1fr;text-align:center}
+      .about-avatar{margin:0 auto}
+      .newsletter-form{flex-direction:column}
+      .newsletter-btn{width:100%}
+      .nav-links{gap:4px}
+      .nav-link{padding:6px 10px;font-size:13px}
     }
 
-    /* =============================
-       AFFIRMATIONS SCREEN
-    ============================= */
-    #screen-affirm { padding: 0; }
-    .affirm-header {
-      padding: calc(var(--safe-top) + 24px) 24px 20px;
-      background: linear-gradient(180deg, rgba(139,92,246,0.12) 0%, transparent 100%);
-    }
-    .affirm-title { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
-    .affirm-subtitle { font-size: 14px; color: var(--text-soft); }
+    /* Fade in animation */
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
 
-    .affirm-cats-wrap { padding: 0 20px; }
-    .affirm-grid { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
-    .aff-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px; cursor: pointer;
-      position: relative; overflow: hidden;
-      transition: transform .15s, border-color .2s;
-    }
-    .aff-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px; border-radius: 3px 0 0 3px;
-    }
-    .aff-card.cat-love::before { background: linear-gradient(180deg, #ff8fc8, #ff4d9e); }
-    .aff-card.cat-abundance::before { background: linear-gradient(180deg, #f5c842, #f0a500); }
-    .aff-card.cat-confidence::before { background: linear-gradient(180deg, #b57bee, #8b5cf6); }
-    .aff-card.cat-health::before { background: linear-gradient(180deg, #7ef5e4, #10b981); }
-    .aff-card.cat-success::before { background: linear-gradient(180deg, #60a5fa, #3b82f6); }
-    .aff-card:active { transform: scale(0.98); }
-    .aff-card.affirmed { border-color: var(--accent-gold); background: rgba(245,200,66,0.06); }
-    .aff-card-text { font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; padding-left: 12px; }
-    .aff-card-bottom { display: flex; align-items: center; justify-content: space-between; padding-left: 12px; }
-    .aff-cat-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-muted); }
-    .aff-heart { font-size: 20px; cursor: pointer; transition: transform .15s; }
-    .aff-heart.active { transform: scale(1.2); }
-    .aff-locked { opacity: 0.5; pointer-events: none; }
-    .aff-locked .aff-card-text::after { content: ' 🔒'; font-size: 13px; }
-
-    /* =============================
-       JOURNAL SCREEN
-    ============================= */
-    #screen-journal { padding: 0; }
-    .journal-header {
-      padding: calc(var(--safe-top) + 24px) 24px 20px;
-      background: linear-gradient(180deg, rgba(255,143,200,0.1) 0%, transparent 100%);
-    }
-    .journal-title { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
-    .journal-date { font-size: 13px; color: var(--text-muted); }
-
-    .journal-prompt-card {
-      margin: 0 20px; background: linear-gradient(135deg, #3d1060, #2a0050);
-      border: 1px solid rgba(255,143,200,0.2); border-radius: var(--radius); padding: 20px;
-      margin-bottom: 16px;
-    }
-    .prompt-emoji { font-size: 32px; margin-bottom: 10px; }
-    .prompt-q { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
-    .prompt-hint { font-size: 13px; color: var(--text-soft); }
-
-    .journal-entry-wrap { padding: 0 20px; }
-    .journal-textarea {
-      width: 100%; min-height: 160px; padding: 16px;
-      background: rgba(181,123,238,0.08); border: 1px solid var(--border);
-      border-radius: var(--radius); color: var(--text-main); font-size: 15px;
-      line-height: 1.6; resize: none; outline: none;
-      transition: border-color .2s, box-shadow .2s; font-family: inherit;
-    }
-    .journal-textarea:focus { border-color: var(--accent-pink); box-shadow: 0 0 0 3px rgba(255,143,200,0.15); }
-    .journal-textarea::placeholder { color: var(--text-muted); }
-
-    .journal-save-btn {
-      margin: 16px 20px 0; width: calc(100% - 40px); padding: 16px; border: none;
-      border-radius: var(--radius); background: linear-gradient(135deg, #ec4899, #8b5cf6);
-      color: white; font-size: 16px; font-weight: 700; cursor: pointer;
-      box-shadow: 0 4px 16px rgba(236,72,153,0.35);
-    }
-
-    .journal-past { padding: 24px 20px 0; }
-    .journal-past-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-    .journal-entry-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 16px; margin-bottom: 10px;
-    }
-    .je-date { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
-    .je-text { font-size: 14px; color: var(--text-soft); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-    /* =============================
-       VISION BOARD SCREEN
-    ============================= */
-    #screen-vision { padding: 0; }
-    .vision-header {
-      padding: calc(var(--safe-top) + 24px) 24px 20px;
-      background: linear-gradient(180deg, rgba(126,245,228,0.1) 0%, transparent 100%);
-    }
-    .vision-title { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
-    .vision-sub { font-size: 14px; color: var(--text-soft); }
-
-    .vision-board {
-      margin: 0 20px; background: var(--bg-card);
-      border: 1px solid var(--border); border-radius: var(--radius);
-      min-height: 280px; padding: 16px; display: grid;
-      grid-template-columns: 1fr 1fr; gap: 10px;
-    }
-    .vision-cell {
-      aspect-ratio: 1; border-radius: var(--radius-sm);
-      background: rgba(181,123,238,0.08); border: 1.5px dashed var(--border);
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; cursor: pointer; overflow: hidden;
-      transition: border-color .2s, background .2s; position: relative;
-    }
-    .vision-cell:hover { border-color: var(--accent-teal); background: rgba(126,245,228,0.08); }
-    .vision-cell.filled { border-style: solid; border-color: rgba(181,123,238,0.3); }
-    .vision-cell img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
-    .vision-add-icon { font-size: 28px; margin-bottom: 6px; }
-    .vision-add-text { font-size: 11px; color: var(--text-muted); }
-    .vision-remove {
-      position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.6);
-      border: none; border-radius: 50%; width: 22px; height: 22px;
-      color: white; font-size: 12px; cursor: pointer; display: none;
-      align-items: center; justify-content: center;
-    }
-    .vision-cell.filled:hover .vision-remove { display: flex; }
-    .vision-cell-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      padding: 20px 8px 8px; font-size: 11px; font-weight: 700;
-      color: white; text-align: center;
-    }
-
-    .vision-goals { padding: 24px 20px 0; }
-    .goal-input-wrap { display: flex; gap: 10px; margin-bottom: 14px; }
-    .goal-input {
-      flex: 1; padding: 13px 16px;
-      background: rgba(126,245,228,0.08); border: 1px solid rgba(126,245,228,0.2);
-      border-radius: var(--radius-sm); color: var(--text-main); font-size: 14px;
-      outline: none; transition: border-color .2s; font-family: inherit;
-    }
-    .goal-input:focus { border-color: var(--accent-teal); }
-    .goal-input::placeholder { color: var(--text-muted); }
-    .goal-add-btn {
-      padding: 13px 16px; background: rgba(126,245,228,0.15);
-      border: 1px solid rgba(126,245,228,0.3); border-radius: var(--radius-sm);
-      color: var(--accent-teal); font-size: 20px; cursor: pointer;
-    }
-    .goal-list { display: flex; flex-direction: column; gap: 8px; }
-    .goal-item {
-      display: flex; align-items: center; gap: 12px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 14px 16px;
-    }
-    .goal-check {
-      width: 22px; height: 22px; border-radius: 50%;
-      border: 2px solid var(--accent-teal); cursor: pointer;
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-      font-size: 12px; transition: all .2s;
-    }
-    .goal-item.done .goal-check { background: var(--accent-teal); color: #0d001a; }
-    .goal-item.done .goal-text { text-decoration: line-through; color: var(--text-muted); }
-    .goal-text { flex: 1; font-size: 14px; font-weight: 600; }
-    .goal-delete { background: none; border: none; font-size: 16px; cursor: pointer; color: var(--text-muted); padding: 4px; }
-
-    /* =============================
-       PROFILE / UPGRADE SCREEN
-    ============================= */
-    #screen-profile { padding: 0; }
-    .profile-header {
-      padding: calc(var(--safe-top) + 32px) 24px 28px;
-      background: linear-gradient(180deg, rgba(181,123,238,0.2) 0%, transparent 100%);
-      text-align: center;
-    }
-    .profile-avatar {
-      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 14px;
-      background: linear-gradient(135deg, #8b5cf6, #ec4899);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 36px; font-weight: 800; color: white;
-      box-shadow: 0 0 30px rgba(139,92,246,0.5);
-    }
-    .profile-name { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
-    .profile-member { font-size: 13px; color: var(--text-muted); }
-
-    .stats-row { display: flex; gap: 10px; padding: 0 20px; margin-bottom: 24px; }
-    .stat-card {
-      flex: 1; background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 16px 12px; text-align: center;
-    }
-    .stat-num { font-size: 24px; font-weight: 800; color: var(--accent-purple); }
-    .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-
-    .upgrade-card {
-      margin: 0 20px 24px;
-      background: linear-gradient(135deg, #2d1060, #1a0040, #0d0030);
-      border: 1px solid rgba(245,200,66,0.3); border-radius: var(--radius);
-      padding: 24px; position: relative; overflow: hidden;
-    }
-    .upgrade-card::before {
-      content: ''; position: absolute; top: -50%; right: -20%;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(245,200,66,0.15), transparent);
-    }
-    .upgrade-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(245,200,66,0.15); border: 1px solid rgba(245,200,66,0.4);
-      border-radius: 20px; padding: 5px 12px; font-size: 11px; font-weight: 700;
-      color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;
-    }
-    .upgrade-title { font-size: 20px; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
-    .upgrade-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-    .upgrade-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-soft); }
-    .upgrade-feature-icon { font-size: 16px; }
-    .upgrade-price { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-    .upgrade-price strong { font-size: 22px; color: var(--accent-gold); }
-    .upgrade-btn {
-      width: 100%; padding: 16px; border: none; border-radius: var(--radius);
-      background: linear-gradient(135deg, #f5c842, #f0a500);
-      color: #0d001a; font-size: 16px; font-weight: 800; cursor: pointer;
-      box-shadow: 0 4px 16px rgba(245,200,66,0.4); transition: transform .15s;
-    }
-    .upgrade-btn:active { transform: scale(0.97); }
-
-    .settings-list { padding: 0 20px; margin-bottom: 100px; }
-    .settings-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 16px 0; border-bottom: 1px solid var(--border); cursor: pointer;
-      transition: opacity .2s;
-    }
-    .settings-item:active { opacity: 0.7; }
-    .settings-icon { font-size: 20px; width: 32px; text-align: center; flex-shrink: 0; }
-    .settings-label { flex: 1; font-size: 15px; font-weight: 600; }
-    .settings-arrow { color: var(--text-muted); font-size: 12px; }
-
-    /* =============================
-       TOAST
-    ============================= */
-    #toast {
-      position: fixed; bottom: calc(var(--nav-h) + 16px); left: 50%;
-      transform: translateX(-50%) translateY(20px); z-index: 999;
-      background: rgba(30,10,60,0.95); backdrop-filter: blur(10px);
-      border: 1px solid var(--border); border-radius: 50px;
-      padding: 12px 24px; font-size: 14px; font-weight: 600;
-      color: var(--text-main); white-space: nowrap;
-      opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none;
-    }
-    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-    /* =============================
-       MODAL
-    ============================= */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(8px); z-index: 200;
-      display: flex; align-items: flex-end; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity .3s;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal-sheet {
-      background: #1a0533; border: 1px solid var(--border);
-      border-radius: 24px 24px 0 0; padding: 24px 24px 40px;
-      width: 100%; max-width: 480px;
-      transform: translateY(30px); transition: transform .3s;
-    }
-    .modal-overlay.open .modal-sheet { transform: translateY(0); }
-    .modal-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-    .modal-sub { font-size: 14px; color: var(--text-soft); margin-bottom: 20px; }
-    .modal-close { float: right; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-muted); margin-top: -4px; }
-
-    /* File input hidden */
-    #vision-file-input { display: none; }
-
-    /* Scrollbar hidden */
-    .screen::-webkit-scrollbar { display: none; }
-    .screen { scrollbar-width: none; }
-
-    /* Loading shimmer */
-    .shimmer {
-      background: linear-gradient(90deg, rgba(181,123,238,0.05) 25%, rgba(181,123,238,0.1) 50%, rgba(181,123,238,0.05) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    /* Decorative divider */
+    .divider{display:flex;align-items:center;justify-content:center;gap:14px;padding:20px 0;color:var(--muted);font-size:18px}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
   </style>
 </head>
 <body>
-
-<!-- Stars -->
 <div id="stars"></div>
 
-<div id="app">
-
-  <!-- ===== ONBOARDING ===== -->
-  <div id="screen-onboard" class="screen active">
-    <div class="onboard-inner">
-      <div class="onboard-emoji">✨</div>
-      <h1 class="onboard-title">Manifest With Me</h1>
-      <p class="onboard-sub">Your daily practice for attracting love, abundance, and the life you deserve.</p>
-      <div class="onboard-steps">
-        <div class="onboard-step">
-          <div class="onboard-step-icon">🌅</div>
-          <div class="onboard-step-text"><strong>Daily Affirmations</strong>Present-tense, science-backed statements to rewire your mindset every morning.</div>
-        </div>
-        <div class="onboard-step">
-          <div class="onboard-step-icon">📓</div>
-          <div class="onboard-step-text"><strong>Manifestation Journal</strong>Guided prompts to clarify your desires and track your journey.</div>
-        </div>
-        <div class="onboard-step">
-          <div class="onboard-step-icon">🖼️</div>
-          <div class="onboard-step-text"><strong>Vision Board</strong>Visualize your dream life and set powerful intentions daily.</div>
-        </div>
-      </div>
-      <div class="name-input-wrap">
-        <label for="user-name">What shall we call you?</label>
-        <input id="user-name" class="name-input" type="text" placeholder="Your name..." maxlength="30" />
-      </div>
-      <button class="btn-primary" onclick="startApp()">✨ Begin My Journey</button>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">✨ Manifesting With Me Today</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Blog</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="../get-app.html" class="nav-link">📱 Get the App</a>
+      <a href="../index.html" class="nav-link nav-cta">Open App ✨</a>
     </div>
   </div>
+</nav>
 
-  <!-- ===== HOME ===== -->
-  <div id="screen-home" class="screen">
-    <div class="home-header">
-      <div class="home-greeting" id="home-greeting">Good morning</div>
-      <div class="home-name" id="home-name">Beautiful Soul ✨</div>
-      <div class="streak-badge" id="streak-badge">🔥 <span id="streak-count">1</span> Day Streak</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="container-sm">
+    <div class="hero-eyebrow">✦ For the woman who is ready</div>
+    <h1 class="hero-title">
+      Your thoughts<br/>
+      <span>create your reality.</span>
+    </h1>
+    <p class="hero-sub">Real tools, real rituals, and real talk for women who are serious about manifesting the life they deserve — starting right now.</p>
+    <div class="hero-btns">
+      <a href="#posts" class="btn btn-primary">✨ Read the Blog</a>
+      <a href="../index.html" class="btn btn-secondary">Open the App →</a>
     </div>
+    <div class="hero-scroll"><div class="scroll-line"></div></div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-header">
-        <div class="section-title">Today's Affirmation</div>
-        <div class="section-action" onclick="showScreen('affirm')">See all →</div>
+<!-- DAILY AFFIRMATION WIDGET -->
+<section style="padding:0 0 20px">
+  <div class="container">
+    <div class="aff-widget fade-in">
+      <div class="aff-widget-label">✦ Your Affirmation Right Now</div>
+      <div class="aff-widget-text" id="aff-widget-text">"I am magnetic. Everything I desire is already on its way to me."</div>
+      <div class="aff-widget-btns">
+        <button class="aff-widget-btn aff-widget-btn-copy" onclick="copyAffirmation()">📋 Copy &amp; Affirm</button>
+        <button class="aff-widget-btn aff-widget-btn-next" onclick="nextWidgetAff()">↻ New Affirmation</button>
       </div>
-      <div class="affirmation-card" id="daily-aff-card">
-        <div class="aff-label">✦ Daily Affirmation</div>
-        <div class="aff-text" id="daily-aff-text">Loading your affirmation...</div>
-        <div class="aff-actions">
-          <button class="aff-btn aff-btn-affirm" onclick="affirmToday()">✓ I Affirm This</button>
-          <button class="aff-btn aff-btn-next" onclick="nextAffirmation()">↻ New One</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-header">
-        <div class="section-title">Categories</div>
-      </div>
-      <div class="cats-scroll" id="home-cats">
-        <div class="cat-pill active" onclick="filterCat('all', this)">All ✨</div>
-        <div class="cat-pill" onclick="filterCat('love', this)">💕 Love</div>
-        <div class="cat-pill" onclick="filterCat('abundance', this)">💰 Abundance</div>
-        <div class="cat-pill" onclick="filterCat('confidence', this)">🦋 Confidence</div>
-        <div class="cat-pill" onclick="filterCat('health', this)">🌿 Health</div>
-        <div class="cat-pill" onclick="filterCat('success', this)">🌟 Success</div>
-      </div>
-    </div>
-
-    <div class="section" style="margin-bottom: 30px;">
-      <div class="section-header">
-        <div class="section-title">Quick Actions</div>
-      </div>
-      <div class="quick-grid">
-        <div class="quick-card" onclick="showScreen('journal')">
-          <div class="quick-icon">📓</div>
-          <div class="quick-label">Journal</div>
-          <div class="quick-sub">Reflect & manifest</div>
-        </div>
-        <div class="quick-card" onclick="showScreen('vision')">
-          <div class="quick-icon">🖼️</div>
-          <div class="quick-label">Vision Board</div>
-          <div class="quick-sub">See your dreams</div>
-        </div>
-        <div class="quick-card locked" onclick="showUpgrade()">
-          <div class="quick-icon">🎧</div>
-          <div class="quick-label">Guided Audio</div>
-          <div class="quick-sub">Subliminal tracks</div>
-          <div class="lock-badge">🔒 PRO</div>
-        </div>
-        <div class="quick-card locked" onclick="showUpgrade()">
-          <div class="quick-icon">📊</div>
-          <div class="quick-label">Progress</div>
-          <div class="quick-sub">Track your growth</div>
-          <div class="lock-badge">🔒 PRO</div>
-        </div>
-      </div>
+      <div class="aff-widget-count" id="aff-count">1 of 40 affirmations</div>
     </div>
   </div>
+</section>
 
-  <!-- ===== AFFIRMATIONS ===== -->
-  <div id="screen-affirm" class="screen">
-    <div class="affirm-header">
-      <div class="affirm-title">Affirmations ✨</div>
-      <div class="affirm-subtitle">Tap any card to affirm. Your brain is listening.</div>
+<!-- FEATURED POST -->
+<section class="featured-section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-eyebrow">✦ Editor's Pick</div>
+      <h2 class="section-title">Start Here If You're New</h2>
     </div>
-    <div class="affirm-cats-wrap">
-      <div class="cats-scroll" id="affirm-cats">
-        <div class="cat-pill active" onclick="filterAffirmCat('all', this)">All</div>
-        <div class="cat-pill" onclick="filterAffirmCat('love', this)">💕 Love</div>
-        <div class="cat-pill" onclick="filterAffirmCat('abundance', this)">💰 Abundance</div>
-        <div class="cat-pill" onclick="filterAffirmCat('confidence', this)">🦋 Confidence</div>
-        <div class="cat-pill" onclick="filterAffirmCat('health', this)">🌿 Health</div>
-        <div class="cat-pill" onclick="filterAffirmCat('success', this)">🌟 Success</div>
-      </div>
-    </div>
-    <div class="affirm-grid" id="affirm-grid"></div>
-  </div>
-
-  <!-- ===== JOURNAL ===== -->
-  <div id="screen-journal" class="screen">
-    <div class="journal-header">
-      <div class="journal-title">Journal 📓</div>
-      <div class="journal-date" id="journal-date"></div>
-    </div>
-    <div class="journal-prompt-card">
-      <div class="prompt-emoji" id="prompt-emoji">💫</div>
-      <div class="prompt-q" id="prompt-q">What do I want to manifest today?</div>
-      <div class="prompt-hint" id="prompt-hint">Write freely. There are no wrong answers.</div>
-    </div>
-    <div class="journal-entry-wrap">
-      <textarea class="journal-textarea" id="journal-input" placeholder="I am grateful for... I am manifesting... I believe..."></textarea>
-      <button class="journal-save-btn" onclick="saveJournalEntry()">💾 Save Entry</button>
-    </div>
-    <div class="journal-past">
-      <div class="journal-past-title">Past Entries</div>
-      <div id="past-entries"></div>
-    </div>
-  </div>
-
-  <!-- ===== VISION BOARD ===== -->
-  <div id="screen-vision" class="screen">
-    <div class="vision-header">
-      <div class="vision-title">Vision Board 🖼️</div>
-      <div class="vision-sub">Tap a cell to add an image or intention.</div>
-    </div>
-    <div class="vision-board" id="vision-board">
-      <!-- Cells injected by JS -->
-    </div>
-    <div class="vision-goals">
-      <div class="section-header" style="padding: 0;">
-        <div class="section-title">My Intentions 🌟</div>
-      </div>
-      <div style="margin-top: 12px;">
-        <div class="goal-input-wrap">
-          <input id="goal-input" class="goal-input" type="text" placeholder="Add an intention..." maxlength="80" />
-          <button class="goal-add-btn" onclick="addGoal()">+</button>
+    <a href="science-of-affirmations.html" class="featured-card fade-in">
+      <div class="featured-card-img">🧠</div>
+      <div class="featured-card-body">
+        <div class="featured-badge">⭐ Must Read</div>
+        <h2 class="featured-title">The Neuroscience Behind Affirmations: Why They Actually Rewire Your Brain</h2>
+        <p class="featured-excerpt">Forget "just think positive." Science now confirms that repeated affirmations literally change the structure of your brain through neuroplasticity — and there's a right and wrong way to do them. Here's everything you need to know.</p>
+        <div class="featured-meta">
+          <span>🧠 Science</span>
+          <span>·</span>
+          <span>8 min read</span>
+          <span>·</span>
+          <span>March 2026</span>
         </div>
-        <div class="goal-list" id="goal-list"></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BLOG POSTS -->
+<section class="blog-section" id="posts">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-eyebrow">✦ Latest Posts</div>
+      <h2 class="section-title">Dive Into the Practice</h2>
+      <p class="section-sub">From moon rituals to money mindset — everything you need to manifest the life you actually want.</p>
+    </div>
+
+    <div class="cat-filter" id="cat-filter">
+      <button class="cat-btn active" onclick="filterPosts('all',this)">All Posts</button>
+      <button class="cat-btn" onclick="filterPosts('science',this)">🔬 Science</button>
+      <button class="cat-btn" onclick="filterPosts('ritual',this)">🌙 Rituals</button>
+      <button class="cat-btn" onclick="filterPosts('abundance',this)">💰 Abundance</button>
+      <button class="cat-btn" onclick="filterPosts('love',this)">💕 Love</button>
+      <button class="cat-btn" onclick="filterPosts('mindset',this)">🦋 Mindset</button>
+    </div>
+
+    <div class="blog-grid" id="blog-grid">
+      <!-- Posts rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- MOON TRACKER -->
+<section class="moon-section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-eyebrow">✦ Lunar Manifesting</div>
+      <h2 class="section-title">Today's Moon Energy</h2>
+    </div>
+    <div class="moon-card fade-in">
+      <div>
+        <div class="moon-emoji" id="moon-emoji">🌙</div>
+        <div style="text-align:center;font-size:13px;color:var(--muted);margin-top:6px" id="moon-phase-name">Calculating...</div>
+      </div>
+      <div>
+        <h3 class="moon-title" id="moon-title">Moon Phase Affirmations</h3>
+        <p class="moon-sub" id="moon-sub">Aligning your practice with the lunar cycle amplifies your manifestations.</p>
+        <div class="moon-affirmations" id="moon-affs"></div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ===== PROFILE ===== -->
-  <div id="screen-profile" class="screen">
-    <div class="profile-header">
-      <div class="profile-avatar" id="profile-initials">S</div>
-      <div class="profile-name" id="profile-name">Soul</div>
-      <div class="profile-member">Free Member · Joined today</div>
+<!-- WHAT MAKES US DIFFERENT -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-eyebrow">✦ Why We're Different</div>
+      <h2 class="section-title">Not Another Affirmation List Blog</h2>
+      <p class="section-sub">We go deeper than your average spiritual blog.</p>
     </div>
-
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-num" id="stat-streak">1</div>
-        <div class="stat-label">Day Streak</div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon">🧠</div>
+        <div class="feature-title">Science-Backed Content</div>
+        <div class="feature-desc">Every technique we teach is rooted in neuroscience, psychology, and cognitive behavioral research — not just spiritual tradition.</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-affirmed">0</div>
-        <div class="stat-label">Affirmed</div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">Copy-Ready Affirmations</div>
+        <div class="feature-desc">Every single affirmation is written in correct present tense — no negative phrasing, no future tense. Tap to copy directly into your practice.</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num" id="stat-entries">0</div>
-        <div class="stat-label">Entries</div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">🌙</div>
+        <div class="feature-title">Live Moon Phase Tracker</div>
+        <div class="feature-desc">Affirmations tailored to today's moon phase, updated automatically. Lunar cycles are a powerful amplifier most blogs completely ignore.</div>
+        <div class="feature-badge">✨ Unique Feature</div>
       </div>
-    </div>
-
-    <div class="upgrade-card">
-      <div class="upgrade-badge">⭐ Manifest PRO</div>
-      <div class="upgrade-title">Unlock your full potential</div>
-      <div class="upgrade-features">
-        <div class="upgrade-feature"><span class="upgrade-feature-icon">🎧</span> Guided subliminal audio tracks</div>
-        <div class="upgrade-feature"><span class="upgrade-feature-icon">📊</span> Advanced progress tracking</div>
-        <div class="upgrade-feature"><span class="upgrade-feature-icon">🌙</span> Sleep & night affirmations</div>
-        <div class="upgrade-feature"><span class="upgrade-feature-icon">📚</span> 500+ premium affirmations</div>
-        <div class="upgrade-feature"><span class="upgrade-feature-icon">🎨</span> Unlimited vision boards</div>
-        <div class="upgrade-feature"><span class="upgrade-feature-icon">🔔</span> Custom reminder scheduling</div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Free Companion App</div>
+        <div class="feature-desc">Everything from the blog is built into the free app — daily affirmations, journaling, vision board, and more. No App Store required.</div>
+        <div class="feature-badge">✨ Unique Feature</div>
       </div>
-      <div class="upgrade-price">From just <strong>$4.99</strong>/month</div>
-      <button class="upgrade-btn" onclick="handleUpgrade()">✨ Upgrade to PRO</button>
-    </div>
-
-    <div class="settings-list">
-      <div class="settings-item" onclick="showToast('⏰ Reminders coming in next update!')">
-        <div class="settings-icon">🔔</div>
-        <div class="settings-label">Daily Reminders</div>
-        <div class="settings-arrow">›</div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">💌</div>
+        <div class="feature-title">Weekly Affirmation Sets</div>
+        <div class="feature-desc">Subscribe to receive a curated weekly set of affirmations, delivered to your inbox every Sunday morning to start your week right.</div>
       </div>
-      <div class="settings-item" onclick="shareApp()">
-        <div class="settings-icon">📤</div>
-        <div class="settings-label">Share App</div>
-        <div class="settings-arrow">›</div>
-      </div>
-      <div class="settings-item" onclick="window.open('https://www.instagram.com/manifesting_with_me_today', '_blank')">
-        <div class="settings-icon">📸</div>
-        <div class="settings-label">Follow on Instagram</div>
-        <div class="settings-arrow">›</div>
-      </div>
-      <div class="settings-item" onclick="showToast('📧 Support: manifesting_with_me_today@gmail.com')">
-        <div class="settings-icon">💬</div>
-        <div class="settings-label">Contact Support</div>
-        <div class="settings-arrow">›</div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Step-by-Step Methods</div>
+        <div class="feature-desc">Deep dives into 369, 55x5, scripting, subliminal audio, and every other proven manifestation method — with exact instructions you can follow today.</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ===== BOTTOM NAV ===== -->
-  <nav id="nav">
-    <div class="nav-items">
-      <button class="nav-item active" onclick="showScreen('home')" id="nav-home">
-        <span class="nav-icon">🏠</span>
-        <span>Home</span>
-        <div class="nav-dot"></div>
-      </button>
-      <button class="nav-item" onclick="showScreen('affirm')" id="nav-affirm">
-        <span class="nav-icon">✨</span>
-        <span>Affirm</span>
-        <div class="nav-dot"></div>
-      </button>
-      <button class="nav-item" onclick="showScreen('journal')" id="nav-journal">
-        <span class="nav-icon">📓</span>
-        <span>Journal</span>
-        <div class="nav-dot"></div>
-      </button>
-      <button class="nav-item" onclick="showScreen('vision')" id="nav-vision">
-        <span class="nav-icon">🖼️</span>
-        <span>Vision</span>
-        <div class="nav-dot"></div>
-      </button>
-      <button class="nav-item" onclick="showScreen('profile')" id="nav-profile">
-        <span class="nav-icon">👤</span>
-        <span>Profile</span>
-        <div class="nav-dot"></div>
-      </button>
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-card fade-in">
+      <div class="section-eyebrow" style="margin-bottom:14px">✦ Free Weekly Drops</div>
+      <h2 class="newsletter-title">Get 7 Affirmations Every Sunday</h2>
+      <p class="newsletter-sub">A fresh set of high-vibe affirmations delivered to your inbox every Sunday morning, curated for the week ahead.</p>
+      <div class="newsletter-perks">
+        <div class="newsletter-perk">Zero spam, ever</div>
+        <div class="newsletter-perk">Moon phase rituals</div>
+        <div class="newsletter-perk">Manifestation methods</div>
+        <div class="newsletter-perk">Exclusive affirmations</div>
+      </div>
+      <div class="newsletter-form">
+        <input class="newsletter-input" type="email" placeholder="your@email.com" id="email-input" />
+        <button class="newsletter-btn" onclick="subscribeEmail()">✨ Join Free</button>
+      </div>
+      <div class="newsletter-note">Join women already manifesting with us. Unsubscribe anytime.</div>
     </div>
-  </nav>
-</div>
+  </div>
+</section>
 
-<!-- Toast -->
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-eyebrow">✦ Your Guide</div>
+      <h2 class="section-title">Behind the Blog</h2>
+    </div>
+    <div class="about-card fade-in">
+      <div class="about-avatar">✨</div>
+      <div>
+        <div class="about-eyebrow">Creator</div>
+        <div class="about-name">Comfort</div>
+        <div class="about-handle">@manifesting_with_me_today</div>
+        <p class="about-bio">
+          I started this blog because I was tired of manifestation content that felt hollow — generic affirmation lists with no depth, no science, and no real guidance. I wanted to create something that actually helps women understand <em>why</em> this works and <em>how</em> to make it work for them personally.
+          <br/><br/>
+          Everything I share here, I practice myself. This is a space for the woman who is serious about her inner work and ready to call in the life she knows she deserves.
+        </p>
+        <a href="https://www.instagram.com/manifesting_with_me_today" target="_blank" class="about-ig">📸 Follow on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">✨ Manifesting With Me Today</div>
+        <p class="footer-tagline">A blog for women who are done waiting and ready to call in everything they desire.</p>
+        <a href="https://www.instagram.com/manifesting_with_me_today" target="_blank" class="footer-ig">📸 @manifesting_with_me_today</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Blog</div>
+        <div class="footer-links">
+          <a href="science-of-affirmations.html" class="footer-link">Neuroscience of Affirmations</a>
+          <a href="369-method.html" class="footer-link">The 369 Method</a>
+          <a href="morning-routine.html" class="footer-link">Morning Ritual Guide</a>
+          <a href="#posts" class="footer-link">All Posts</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">App</div>
+        <div class="footer-links">
+          <a href="../index.html" class="footer-link">Open Free App</a>
+          <a href="../get-app.html" class="footer-link">Get the App</a>
+          <a href="../index.html" class="footer-link">PRO Features</a>
+          <a href="https://www.instagram.com/manifesting_with_me_today" target="_blank" class="footer-link">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Manifesting With Me Today · Made with 💜</span>
+      <span>@manifesting_with_me_today</span>
+    </div>
+  </div>
+</footer>
+
 <div id="toast"></div>
 
-<!-- Upgrade Modal -->
-<div class="modal-overlay" id="upgrade-modal">
-  <div class="modal-sheet">
-    <button class="modal-close" onclick="closeModal('upgrade-modal')">✕</button>
-    <div class="modal-title">🔒 PRO Feature</div>
-    <div class="modal-sub">Upgrade to Manifest PRO to unlock this feature and many more.</div>
-    <button class="upgrade-btn" onclick="handleUpgrade()" style="width:100%;padding:16px;border:none;border-radius:16px;background:linear-gradient(135deg,#f5c842,#f0a500);color:#0d001a;font-size:16px;font-weight:800;cursor:pointer;">✨ Upgrade to PRO — $4.99/mo</button>
-  </div>
-</div>
-
-<!-- Vision Image Modal -->
-<div class="modal-overlay" id="vision-modal">
-  <div class="modal-sheet">
-    <button class="modal-close" onclick="closeModal('vision-modal')">✕</button>
-    <div class="modal-title">Add to Vision Board</div>
-    <div class="modal-sub">Upload a photo or type an intention label.</div>
-    <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
-      <button onclick="triggerVisionFile()" style="padding:14px;background:rgba(181,123,238,0.15);border:1px dashed rgba(181,123,238,0.4);border-radius:14px;color:var(--accent-lavender);font-size:15px;font-weight:700;cursor:pointer;">📁 Upload Image</button>
-      <input type="text" id="vision-label-input" placeholder="Or type an intention label..." style="padding:14px;background:rgba(181,123,238,0.08);border:1px solid rgba(181,123,238,0.2);border-radius:14px;color:var(--text-main);font-size:15px;outline:none;font-family:inherit;" />
-      <button onclick="saveVisionLabel()" style="padding:14px;background:linear-gradient(135deg,#7ef5e4,#10b981);border:none;border-radius:14px;color:#0d001a;font-size:15px;font-weight:800;cursor:pointer;">✓ Save Intention</button>
-    </div>
-  </div>
-</div>
-
-<input type="file" id="vision-file-input" accept="image/*" />
-
 <script>
-// ================================
-// DATA
-// ================================
-const AFFIRMATIONS = {
-  love: [
-    "I am worthy of deep, passionate, and unconditional love.",
-    "Love flows to me freely and easily from all directions.",
-    "I attract loving, healthy relationships that uplift my soul.",
-    "I am a magnet for my soulmate, and they are on their way to me.",
-    "My heart is open and ready to give and receive infinite love.",
-    "I deserve to be loved exactly as I am, right now.",
-    "Every day, my relationships grow deeper and more meaningful.",
-    "I radiate love and it returns to me multiplied.",
-  ],
-  abundance: [
-    "Money flows to me easily, frequently, and in increasing amounts.",
-    "I am a magnet for financial abundance and prosperity.",
-    "I deserve wealth and I embrace it fully.",
-    "My bank account grows larger every single day.",
-    "Abundance is my natural state of being.",
-    "I am open to receiving wealth from expected and unexpected sources.",
-    "I manage money wisely and it multiplies in my hands.",
-    "Financial freedom is mine now and I live my best life.",
-  ],
-  confidence: [
-    "I am enough, exactly as I am, right now.",
-    "I trust my intuition and act on it without hesitation.",
-    "My confidence grows stronger with every passing day.",
-    "I walk into every room knowing my presence is a gift.",
-    "I am proud of who I am becoming.",
-    "My voice matters and I speak my truth fearlessly.",
-    "I radiate confidence, beauty, and inner strength.",
-    "I release all doubt and embrace my full power.",
-  ],
-  health: [
-    "My body is healthy, strong, and full of vibrant energy.",
-    "Every cell in my body vibrates with health and vitality.",
-    "I nourish my body with love, care, and intention.",
-    "My mind, body, and spirit are in perfect alignment.",
-    "I wake up every morning feeling energized and alive.",
-    "My body heals quickly and easily.",
-    "I am grateful for my strong, capable, beautiful body.",
-    "Health and wellness are my natural birthright.",
-  ],
-  success: [
-    "I am on the path to achieving everything I desire.",
-    "Success is inevitable for me — I am fully aligned with it.",
-    "My dreams are valid and I am worthy of achieving them.",
-    "Everything I touch turns to gold.",
-    "I attract opportunities that align with my highest purpose.",
-    "I have everything I need to succeed.",
-    "My potential is limitless and I step into it daily.",
-    "I am creating the life of my dreams one day at a time.",
-  ]
-};
-
-const JOURNAL_PROMPTS = [
-  { emoji: '💫', q: 'What do I want to manifest today?', hint: 'Be specific. Write it as if it already exists.' },
-  { emoji: '🙏', q: 'What am I deeply grateful for right now?', hint: 'Gratitude raises your vibration instantly.' },
-  { emoji: '🌟', q: 'What does my dream life look, feel, and smell like?', hint: 'Describe it in vivid, present-tense detail.' },
-  { emoji: '💪', q: 'What limiting belief am I releasing today?', hint: 'Name it, then rewrite it as a new truth.' },
-  { emoji: '✨', q: 'What signs from the universe have I noticed lately?', hint: 'Synchronicities, repeating numbers, feelings...' },
-  { emoji: '🌙', q: 'What would my highest self do differently today?', hint: 'Step into that version of you now.' },
-  { emoji: '🌺', q: 'How am I showing up for the life I am calling in?', hint: 'Actions aligned with your desires create magic.' },
-  { emoji: '🔮', q: 'If I knew I could not fail, what would I do?', hint: 'This is your sign. Go do it.' },
-];
-
-// ================================
-// STATE
-// ================================
-let state = {
-  name: '',
-  streak: 1,
-  lastDate: '',
-  affirmedCount: 0,
-  affirmedToday: false,
-  currentAff: null,
-  currentCat: 'all',
-  goals: [],
-  journalEntries: [],
-  visionCells: Array(6).fill(null),
-  isPro: false,
-};
-
-// ================================
-// INIT
-// ================================
-function init() {
-  createStars();
-  loadState();
-  if (state.name) {
-    launchApp();
-  }
-}
-
-function createStars() {
-  const s = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) {
-    const el = document.createElement('div');
-    el.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    el.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+1.5).toFixed(1)}s;animation-delay:${(Math.random()*3).toFixed(1)}s`;
+// STARS
+(function(){
+  const s=document.getElementById('stars');
+  for(let i=0;i<70;i++){
+    const el=document.createElement('div');
+    el.className='star';
+    const sz=Math.random()*2+.5;
+    el.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+1).toFixed(1)}s;animation-delay:${(Math.random()*4).toFixed(1)}s`;
     s.appendChild(el);
   }
-}
+})();
 
-function loadState() {
-  try {
-    const saved = localStorage.getItem('mwm_state');
-    if (saved) Object.assign(state, JSON.parse(saved));
-    // Update streak
-    const today = new Date().toDateString();
-    if (state.lastDate !== today) {
-      const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
-      if (state.lastDate !== yesterday.toDateString()) state.streak = 1;
-      else state.streak++;
-      state.lastDate = today;
-      state.affirmedToday = false;
-      saveState();
-    }
-  } catch(e) {}
-}
-
-function saveState() {
-  try { localStorage.setItem('mwm_state', JSON.stringify(state)); } catch(e) {}
-}
-
-function startApp() {
-  const n = document.getElementById('user-name').value.trim() || 'Beautiful Soul';
-  state.name = n;
-  state.lastDate = new Date().toDateString();
-  saveState();
-  launchApp();
-}
-
-function launchApp() {
-  document.getElementById('screen-onboard').classList.remove('active');
-  document.getElementById('nav').classList.add('visible');
-  showScreen('home');
-  renderHome();
-  renderAffirmations();
-  renderJournal();
-  renderVisionBoard();
-  renderProfile();
-}
-
-// ================================
-// NAVIGATION
-// ================================
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('screen-' + name).classList.add('active');
-  const navEl = document.getElementById('nav-' + name);
-  if (navEl) navEl.classList.add('active');
-}
-
-// ================================
-// HOME
-// ================================
-function renderHome() {
-  const h = new Date().getHours();
-  const greet = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
-  document.getElementById('home-greeting').textContent = greet;
-  document.getElementById('home-name').textContent = state.name + ' ✨';
-  document.getElementById('streak-count').textContent = state.streak;
-  setDailyAffirmation();
-}
-
-function getAllAffirmations(cat) {
-  if (cat === 'all') return Object.values(AFFIRMATIONS).flat();
-  return AFFIRMATIONS[cat] || [];
-}
-
-function setDailyAffirmation() {
-  const all = getAllAffirmations('all');
-  const idx = Math.floor((new Date().getDate() + new Date().getMonth()) % all.length);
-  state.currentAff = state.currentAff || all[idx];
-  document.getElementById('daily-aff-text').textContent = '"' + state.currentAff + '"';
-}
-
-function nextAffirmation() {
-  const all = getAllAffirmations(state.currentCat);
-  const cur = all.indexOf(state.currentAff);
-  state.currentAff = all[(cur + 1) % all.length];
-  document.getElementById('daily-aff-text').textContent = '"' + state.currentAff + '"';
-  const card = document.getElementById('daily-aff-card');
-  card.style.transform = 'scale(0.97)';
-  setTimeout(() => card.style.transform = '', 150);
-}
-
-function affirmToday() {
-  if (!state.affirmedToday) {
-    state.affirmedCount++;
-    state.affirmedToday = true;
-    saveState();
-    document.getElementById('stat-affirmed').textContent = state.affirmedCount;
-  }
-  showToast('💫 Affirmation accepted by the universe!');
-}
-
-function filterCat(cat, el) {
-  document.querySelectorAll('#home-cats .cat-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  state.currentCat = cat;
-  nextAffirmation();
-}
-
-// ================================
 // AFFIRMATIONS
-// ================================
-let affirmCat = 'all';
-function renderAffirmations() {
-  renderAffirmGrid(affirmCat);
+const AFFS=[
+  "I am magnetic. Everything I desire is already on its way to me.",
+  "I am worthy of abundance, love, and everything beautiful.",
+  "Money flows to me easily and from multiple directions.",
+  "I am becoming the highest version of myself every single day.",
+  "My thoughts create my reality, and my reality is beautiful.",
+  "I attract opportunities that align with my soul's purpose.",
+  "I am loved, supported, and guided by the universe.",
+  "Everything I need is already within me.",
+  "I release all resistance and allow good things to flow in.",
+  "My dreams are valid, and I am actively making them real.",
+  "I am a powerful creator of my own experience.",
+  "Abundance is my natural state of being.",
+  "I wake up every day excited about the life I am creating.",
+  "I trust the timing of my life completely.",
+  "I am open to receiving miracles every single day.",
+  "Love, success, and joy are all available to me now.",
+  "My body is healthy, strong, and full of energy.",
+  "I radiate confidence and attract the right people into my life.",
+  "I am grateful for everything I have and excited for what's coming.",
+  "The universe always has my back.",
+  "I deserve to take up space and be fully seen.",
+  "Success is inevitable for me — I am aligned with it.",
+  "I am healing, growing, and evolving every day.",
+  "What I focus on expands — and I choose to focus on beauty.",
+  "I am a magnet for my soulmate and deepest connections.",
+  "Every day I grow closer to the life I am calling in.",
+  "I give myself full permission to want what I want.",
+  "I am in perfect alignment with my highest timeline.",
+  "My vibe is high, my heart is open, and magic happens around me.",
+  "I am enough. I have always been enough.",
+  "Financial freedom is my reality and I embrace it fully.",
+  "I release fear and step boldly into my power.",
+  "I am grateful — and gratitude multiplies my blessings.",
+  "Everything is always working out for me.",
+  "I choose joy, abundance, and love as my daily experience.",
+  "I trust myself completely to create the life I desire.",
+  "My potential is limitless and I claim it now.",
+  "I attract exactly what I need at exactly the right time.",
+  "I am worthy of the life I am dreaming of.",
+  "Today I choose to believe in my own magic.",
+];
+
+let affIdx=0;
+function nextWidgetAff(){
+  const el=document.getElementById('aff-widget-text');
+  el.style.opacity='0';
+  setTimeout(()=>{
+    affIdx=(affIdx+1)%AFFS.length;
+    el.textContent='"'+AFFS[affIdx]+'"';
+    document.getElementById('aff-count').textContent=(affIdx+1)+' of '+AFFS.length+' affirmations';
+    el.style.opacity='1';
+  },300);
 }
 
-function filterAffirmCat(cat, el) {
-  document.querySelectorAll('#affirm-cats .cat-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  affirmCat = cat;
-  renderAffirmGrid(cat);
+function copyAffirmation(){
+  const text=AFFS[affIdx];
+  navigator.clipboard.writeText(text).then(()=>showToast('💫 Copied! Speak it out loud three times.')).catch(()=>showToast('✨ '+text.slice(0,40)+'...'));
 }
 
-function renderAffirmGrid(cat) {
-  const grid = document.getElementById('affirm-grid');
-  const affs = [];
-  if (cat === 'all') {
-    Object.entries(AFFIRMATIONS).forEach(([c, arr]) => arr.forEach((a, i) => affs.push({text:a, cat:c, idx:i})));
-  } else {
-    (AFFIRMATIONS[cat]||[]).forEach((a, i) => affs.push({text:a, cat, idx:i}));
-  }
-  grid.innerHTML = affs.map((a, i) => {
-    const locked = !state.isPro && i >= 5;
-    const key = a.cat+'_'+a.idx;
-    const hearted = (state.hearts||{})[key];
-    return `
-      <div class="aff-card cat-${a.cat} ${locked?'aff-locked':''}" onclick="${locked ? 'showUpgrade()' : `affirmedCard('${key}')`}">
-        <div class="aff-card-text">"${a.text}"</div>
-        <div class="aff-card-bottom">
-          <div class="aff-cat-tag">${a.cat}</div>
-          <div class="aff-heart ${hearted?'active':''}" onclick="${locked ? 'event.stopPropagation()' : `heartAff(event,'${key}')`}">
-            ${hearted ? '❤️' : '🤍'}
-          </div>
+// BLOG POSTS DATA
+const POSTS=[
+  {id:'science-of-affirmations',cat:'science',emoji:'🧠',catLabel:'Science',catClass:'cat-science',title:'The Neuroscience Behind Affirmations: Why They Actually Rewire Your Brain',excerpt:'Forget "just think positive." Science confirms that repeated affirmations literally change your brain structure through neuroplasticity — and there is a right and wrong way to use them.',date:'March 10, 2026',read:'8 min read',url:'science-of-affirmations.html'},
+  {id:'369-method',cat:'ritual',emoji:'🔢',catLabel:'Ritual',catClass:'cat-ritual',title:'The 369 Manifestation Method: Nikola Tesla\'s Secret Made Into a Daily Practice',excerpt:'The 369 method is one of the most powerful manifestation techniques going viral for good reason. Here is the exact step-by-step process, common mistakes, and what to write for different desires.',date:'March 8, 2026',read:'7 min read',url:'369-method.html'},
+  {id:'morning-routine',cat:'ritual',emoji:'🌅',catLabel:'Ritual',catClass:'cat-ritual',title:'The Perfect 15-Minute Morning Manifestation Routine (That Actually Works)',excerpt:'Your morning sets the energetic tone for your entire day. Here is a simple, science-backed morning ritual that takes just 15 minutes and puts you in a state of alignment before 9am.',date:'March 5, 2026',read:'6 min read',url:'morning-routine.html'},
+  {id:'money-mindset',cat:'abundance',emoji:'💰',catLabel:'Abundance',catClass:'cat-abundance',title:'30 Powerful Money Affirmations to Reprogram Your Wealth Mindset (Written Correctly)',excerpt:'Most money affirmations are written wrong — future tense, double negatives, or resistance-filled language. These 30 are crafted using proper neuroscience principles for maximum impact.',date:'March 3, 2026',read:'5 min read',url:'science-of-affirmations.html'},
+  {id:'scripting',cat:'ritual',emoji:'📝',catLabel:'Ritual',catClass:'cat-ritual',title:'Scripting for Manifestation: How to Write Your Future Into Reality',excerpt:'Scripting is the practice of writing your desires as if they have already happened. When done correctly, it is one of the most powerful manifestation tools available. Here is everything you need to know.',date:'Feb 28, 2026',read:'7 min read',url:'369-method.html'},
+  {id:'love-affirmations',cat:'love',emoji:'💕',catLabel:'Love',catClass:'cat-love',title:'35 Love Affirmations for Attracting Your Soulmate (Backed by Science)',excerpt:'Whether you are calling in a new relationship or deepening an existing one, these carefully crafted love affirmations are designed to open your heart, raise your vibrational frequency, and magnetize real love.',date:'Feb 25, 2026',read:'6 min read',url:'science-of-affirmations.html'},
+  {id:'subliminal',cat:'science',emoji:'🎧',catLabel:'Science',catClass:'cat-science',title:'Subliminal Audio for Manifestation: What the Research Actually Says',excerpt:'Subliminal audio has gone viral in manifestation communities — but does it actually work? We look at the research, the neuroscience, and how to use it correctly in your practice.',date:'Feb 22, 2026',read:'9 min read',url:'science-of-affirmations.html'},
+  {id:'confidence',cat:'mindset',emoji:'🦋',catLabel:'Mindset',catClass:'cat-mindset',title:'How to Build Unshakeable Confidence Through Daily Affirmations (A 30-Day Plan)',excerpt:'Confidence is not something you either have or do not have — it is a skill you build. This 30-day affirmation plan is designed to systematically dismantle self-doubt and replace it with deep self-trust.',date:'Feb 19, 2026',read:'8 min read',url:'morning-routine.html'},
+  {id:'full-moon',cat:'ritual',emoji:'🌕',catLabel:'Ritual',catClass:'cat-ritual',title:'Full Moon Ritual: How to Release What No Longer Serves You and Call In What Does',excerpt:'The full moon is the most powerful time to release emotional blocks, limiting beliefs, and anything holding you back. This complete ritual takes 20 minutes and produces real results.',date:'Feb 17, 2026',read:'7 min read',url:'369-method.html'},
+];
+
+let activeCat='all';
+function renderPosts(cat){
+  const grid=document.getElementById('blog-grid');
+  const filtered=cat==='all'?POSTS:POSTS.filter(p=>p.cat===cat);
+  grid.innerHTML=filtered.map(p=>`
+    <a href="${p.url}" class="blog-card">
+      <div class="blog-card-img-placeholder" style="background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(244,114,182,.1))">${p.emoji}</div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-card-cat ${p.catClass}">${p.catLabel}</span>
+          <span class="blog-card-date">${p.date}</span>
         </div>
-      </div>`;
-  }).join('');
+        <div class="blog-card-title">${p.title}</div>
+        <div class="blog-card-excerpt">${p.excerpt}</div>
+        <div class="blog-card-footer">
+          <span class="blog-card-read">📖 ${p.read}</span>
+          <span class="blog-card-arrow">→</span>
+        </div>
+      </div>
+    </a>`).join('');
 }
 
-function affirmedCard(key) {
-  state.affirmedCount++;
-  saveState();
-  document.getElementById('stat-affirmed').textContent = state.affirmedCount;
-  showToast('💫 Affirmed! The universe heard you.');
+function filterPosts(cat,el){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  activeCat=cat;
+  renderPosts(cat);
 }
 
-function heartAff(e, key) {
-  e.stopPropagation();
-  if (!state.hearts) state.hearts = {};
-  state.hearts[key] = !state.hearts[key];
-  saveState();
-  renderAffirmGrid(affirmCat);
-  showToast(state.hearts[key] ? '❤️ Added to favorites!' : '🤍 Removed from favorites');
+// MOON PHASE
+function getMoonPhase(){
+  const date=new Date();
+  const year=date.getFullYear(),month=date.getMonth()+1,day=date.getDate();
+  let c,e,jd,b;
+  if(month<3){year--;month+=12;}
+  const a=Math.floor(year/100);
+  const m=2-a+Math.floor(a/4);
+  jd=Math.floor(365.25*(year+4716))+Math.floor(30.6001*(month+1))+day+m-1524.5;
+  const days=(jd-2451550.1)/29.530588;
+  const frac=days-Math.floor(days);
+  const pct=Math.round(frac*100);
+  if(pct<4)return{phase:'New Moon',emoji:'🌑',affs:["I set powerful new intentions for this cycle.","I am planting seeds of abundance and love.","I am open to fresh beginnings in every area of my life."]};
+  if(pct<25)return{phase:'Waxing Crescent',emoji:'🌒',affs:["I take inspired action toward my desires every day.","I am growing into the person my dreams require.","My momentum builds beautifully and consistently."]};
+  if(pct<35)return{phase:'First Quarter',emoji:'🌓',affs:["I push through any resistance with grace and strength.","I am committed to my dreams even on hard days.","Every challenge I face makes me more powerful."]};
+  if(pct<55)return{phase:'Waxing Gibbous',emoji:'🌔',affs:["I am so close to what I have been calling in.","I trust the process and stay in high vibration.","My manifestations are ripening — I can feel it."]};
+  if(pct<65)return{phase:'Full Moon',emoji:'🌕',affs:["I release everything that no longer serves my highest good.","I celebrate how far I have come on this journey.","I am grateful for all that the universe has provided."]};
+  if(pct<75)return{phase:'Waning Gibbous',emoji:'🌖',affs:["I release what did not manifest with love and trust.","I am grateful for every lesson I have learned.","I trust the universe's perfect timing completely."]};
+  if(pct<85)return{phase:'Last Quarter',emoji:'🌗',affs:["I let go of what I cannot control with peace.","I forgive myself and others with an open heart.","I make space for new blessings to enter my life."]};
+  return{phase:'Waning Crescent',emoji:'🌘',affs:["I rest and restore my energy with gratitude.","I reflect on all the goodness in my life right now.","I am preparing for a powerful new cycle of manifestation."]};
 }
 
-// ================================
-// JOURNAL
-// ================================
-function renderJournal() {
-  const today = new Date();
-  document.getElementById('journal-date').textContent = today.toLocaleDateString('en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  const prompt = JOURNAL_PROMPTS[today.getDate() % JOURNAL_PROMPTS.length];
-  document.getElementById('prompt-emoji').textContent = prompt.emoji;
-  document.getElementById('prompt-q').textContent = prompt.q;
-  document.getElementById('prompt-hint').textContent = prompt.hint;
-  renderPastEntries();
+function renderMoon(){
+  const m=getMoonPhase();
+  document.getElementById('moon-emoji').textContent=m.emoji;
+  document.getElementById('moon-phase-name').textContent=m.phase;
+  document.getElementById('moon-title').textContent=m.phase+' — Your Affirmations';
+  document.getElementById('moon-sub').textContent='The '+m.phase.toLowerCase()+' is the perfect time to align your practice with lunar energy.';
+  document.getElementById('moon-affs').innerHTML=m.affs.map(a=>`<div class="moon-aff">"${a}"</div>`).join('');
 }
 
-function saveJournalEntry() {
-  const text = document.getElementById('journal-input').value.trim();
-  if (!text) { showToast('✍️ Write something first!'); return; }
-  state.journalEntries = state.journalEntries || [];
-  state.journalEntries.unshift({
-    date: new Date().toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}),
-    text,
-    ts: Date.now()
+// NEWSLETTER
+function subscribeEmail(){
+  const email=document.getElementById('email-input').value.trim();
+  if(!email||!email.includes('@')){showToast('✍️ Enter a valid email first!');return;}
+  document.getElementById('email-input').value='';
+  showToast('💜 You\'re in! Check your inbox Sunday morning ✨');
+}
+
+// TOAST
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(window._t);
+  window._t=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// FADE IN ON SCROLL
+function checkFade(){
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight-60)el.classList.add('visible');
   });
-  document.getElementById('journal-input').value = '';
-  saveState();
-  renderPastEntries();
-  showToast('✨ Entry saved! Keep manifesting!');
-  document.getElementById('stat-entries').textContent = state.journalEntries.length;
 }
 
-function renderPastEntries() {
-  const wrap = document.getElementById('past-entries');
-  const entries = state.journalEntries || [];
-  if (!entries.length) { wrap.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:8px 0;">Your entries will appear here.</p>'; return; }
-  wrap.innerHTML = entries.slice(0, 10).map(e => `
-    <div class="journal-entry-card">
-      <div class="je-date">${e.date}</div>
-      <div class="je-text">${e.text.replace(/</g,'&lt;')}</div>
-    </div>`).join('');
-}
-
-// ================================
-// VISION BOARD
-// ================================
-function renderVisionBoard() {
-  const board = document.getElementById('vision-board');
-  board.innerHTML = '';
-  for (let i = 0; i < 6; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'vision-cell' + (state.visionCells[i] ? ' filled' : '');
-    cell.dataset.idx = i;
-    if (state.visionCells[i]) {
-      const d = state.visionCells[i];
-      if (d.img) cell.innerHTML = `<img src="${d.img}" alt="vision" /><button class="vision-remove" onclick="removeVisionCell(event,${i})">✕</button>`;
-      else cell.innerHTML = `<div style="padding:12px;text-align:center;font-size:14px;font-weight:700;color:var(--accent-lavender);word-break:break-word;">${d.label}</div><button class="vision-remove" onclick="removeVisionCell(event,${i})">✕</button>`;
-    } else {
-      cell.innerHTML = `<div class="vision-add-icon">+</div><div class="vision-add-text">Add intention</div>`;
-      cell.onclick = () => openVisionModal(i);
-    }
-    board.appendChild(cell);
-  }
-  renderGoals();
-}
-
-let currentVisionIdx = -1;
-function openVisionModal(i) {
-  currentVisionIdx = i;
-  document.getElementById('vision-label-input').value = '';
-  openModal('vision-modal');
-}
-
-function triggerVisionFile() {
-  const fi = document.getElementById('vision-file-input');
-  fi.onchange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      state.visionCells[currentVisionIdx] = { img: ev.target.result };
-      saveState();
-      renderVisionBoard();
-      closeModal('vision-modal');
-    };
-    reader.readAsDataURL(file);
-  };
-  fi.click();
-}
-
-function saveVisionLabel() {
-  const label = document.getElementById('vision-label-input').value.trim();
-  if (!label) { showToast('✍️ Enter an intention first!'); return; }
-  state.visionCells[currentVisionIdx] = { label };
-  saveState();
-  renderVisionBoard();
-  closeModal('vision-modal');
-  showToast('🌟 Intention set!');
-}
-
-function removeVisionCell(e, i) {
-  e.stopPropagation();
-  state.visionCells[i] = null;
-  saveState();
-  renderVisionBoard();
-}
-
-function addGoal() {
-  const inp = document.getElementById('goal-input');
-  const text = inp.value.trim();
-  if (!text) return;
-  if (!state.isPro && (state.goals||[]).length >= 5) { showUpgrade(); return; }
-  state.goals = state.goals || [];
-  state.goals.push({ text, done: false, id: Date.now() });
-  inp.value = '';
-  saveState();
-  renderGoals();
-}
-
-function renderGoals() {
-  const list = document.getElementById('goal-list');
-  const goals = state.goals || [];
-  list.innerHTML = goals.map(g => `
-    <div class="goal-item ${g.done?'done':''}" id="goal-${g.id}">
-      <div class="goal-check" onclick="toggleGoal(${g.id})">${g.done?'✓':''}</div>
-      <div class="goal-text">${g.text}</div>
-      <button class="goal-delete" onclick="deleteGoal(${g.id})">🗑</button>
-    </div>`).join('');
-}
-
-function toggleGoal(id) {
-  const g = state.goals.find(g => g.id === id);
-  if (g) { g.done = !g.done; saveState(); renderGoals(); }
-}
-
-function deleteGoal(id) {
-  state.goals = state.goals.filter(g => g.id !== id);
-  saveState();
-  renderGoals();
-}
-
-// ================================
-// PROFILE
-// ================================
-function renderProfile() {
-  const name = state.name || 'Soul';
-  document.getElementById('profile-name').textContent = name;
-  document.getElementById('profile-initials').textContent = name[0].toUpperCase();
-  document.getElementById('stat-streak').textContent = state.streak;
-  document.getElementById('stat-affirmed').textContent = state.affirmedCount || 0;
-  document.getElementById('stat-entries').textContent = (state.journalEntries||[]).length;
-}
-
-// ================================
-// UTILITIES
-// ================================
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
-function showUpgrade() { openModal('upgrade-modal'); }
-
-function handleUpgrade() {
-  closeModal('upgrade-modal');
-  showToast('🚀 Coming soon! Follow @manifesting_with_me_today on Instagram for launch updates.');
-}
-
-function shareApp() {
-  const url = window.location.href;
-  const text = '✨ I found the most beautiful manifestation app! Try it: ';
-  if (navigator.share) {
-    navigator.share({ title: 'Manifest With Me', text, url });
-  } else {
-    navigator.clipboard.writeText(url).then(() => showToast('🔗 Link copied to clipboard!'));
-  }
-}
-
-// ================================
-// KEYBOARD: enter to save journal
-// ================================
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && document.getElementById('goal-input') === document.activeElement) addGoal();
-});
-
-// ================================
-// START + SERVICE WORKER REGISTRATION
-// ================================
-window.addEventListener('load', () => {
-  init();
-  // Register service worker for PWA / offline support
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  }
+window.addEventListener('scroll',checkFade,{passive:true});
+document.addEventListener('DOMContentLoaded',()=>{
+  renderPosts('all');
+  renderMoon();
+  // Set initial affirmation randomly
+  affIdx=Math.floor(Math.random()*AFFS.length);
+  document.getElementById('aff-widget-text').textContent='"'+AFFS[affIdx]+'"';
+  document.getElementById('aff-count').textContent=(affIdx+1)+' of '+AFFS.length+' affirmations';
+  setTimeout(checkFade,100);
 });
 </script>
 </body>
